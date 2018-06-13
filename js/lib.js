@@ -30,3 +30,34 @@ function getMangaMirror(mirror) {
     }
     return null;
 }
+var CommonUtil = {
+  fixUrlProtocall : function(url, httpProtocol) {
+
+        let removeProtocolPrefix = function(str) {
+          let i = str.indexOf("://");
+          if (i === -1) return str;
+          let s = str.slice(i + 3);
+
+          return s;
+        }
+
+        url = removeProtocolPrefix(url);
+
+        if (typeof(httpProtocol) === "undefined" || httpProtocol === "") {
+          httpProtocol = "http://";
+        }
+        else if (!httpProtocol.endsWith("://")) {
+          httpProtocol = httpProtocol + "://"
+        }
+
+        if (url.startsWith("//"))
+        {
+          url = httpProtocol + url.slice(2);
+        }
+
+        if (!url.startsWith(httpProtocol)) {
+          url = httpProtocol + url;
+        }
+        return url;
+  }
+};
