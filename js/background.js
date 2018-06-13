@@ -38,7 +38,7 @@ var sharinganImage = document.createElement('img');
 sharinganImage.src = 'img/amrlittle.png';
 var status_ready = true;
 var reason;
-var contentScripts = ['js/jquery.js', 'js/jquery.scrollTo-1.4.3.1-min.js', 'js/jquery.simplemodal-1.4.4.js', 'js/back.js'];
+var contentScripts = ['js/jquery.js', 'js/jquery.scrollTo-1.4.3.1-min.js', 'js/jquery.simplemodal-1.4.4.js', 'js/back.js', 'js/lib.js'];
 /**
  * Returns the week number for this date.  dowOffset is the day of week the week
  * "starts" on for your locale - it can be from 0 to 6. If dowOffset is 1 (Monday),
@@ -899,6 +899,7 @@ chrome.runtime.onMessage.addListener(
             });
             break;
         case "pagematchurls":
+        
             doesCurrentPageMatchManga(request.url,
                                       activatedMirrors(),
                                       function (_isOk,
@@ -2100,6 +2101,7 @@ function batchInjectScripts(tabId, scripts, callback) {
     };
     injectScript(scripts, 0);
 }
+
 $(function () {
     pstat.init();
     wssql.init();
